@@ -122,24 +122,35 @@ Customized for twiki-org-mode."
 (defun twiki-org-do-promote ()
   "Promote the current heading higher up the tree.
 If the region is active in `transient-mark-mode', promote all headings
-in the region."
+in the region.
+
+FIXME: The org function that calls hooks expects success; the
+simplest way I've found to do that is the stupid bit of math at
+the end.  I'm sure this is quite wrong."
   (interactive)
   (save-excursion
     (if (org-region-active-p)
 	(org-map-region 'twiki-org-promote (region-beginning) (region-end))
       (twiki-org-promote)))
-  (org-fix-position-after-promote))
+  (org-fix-position-after-promote)
+  (+ 1 1))
 
 (defun twiki-org-do-demote ()
   "Demote the current heading lower down the tree.
 If the region is active in `transient-mark-mode', demote all headings
-in the region."
+in the region.
+
+FIXME: The org function that calls hooks expects success; the
+simplest way I've found to do that is the stupid bit of math at
+the end.  I'm sure this is quite wrong."
   (interactive)
   (save-excursion
     (if (org-region-active-p)
 	(org-map-region 'twiki-org-demote (region-beginning) (region-end))
       (twiki-org-demote)))
-  (org-fix-position-after-promote))
+  (org-fix-position-after-promote)
+  (+ 1 1))
+
 
 (defun twiki-org-promote ()
   "Promote the current heading higher up the tree.
