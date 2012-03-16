@@ -79,12 +79,17 @@
    font-lock-preprocessor-face])
 
 (defun twiki-org-level ()
+  "Calculate level of heading we're on/in.
+
+Note that we need to subtract 4 because of the extra,
+non-headline bits the regex matches: '---' at the beginning, and
+a trailing space after the +."
   (let ((count 1)
         (outline-level 'outline-level))
     (save-excursion
       (outline-back-to-heading t)
       (while (and (not (bobp))
-                  (not (eq (outline-level) 1)))
+                  (not (eq (- (outline-level) 4) 1)))
         (outline-up-heading 1)
         (or (bobp)
             (setq count (1+ count))))
