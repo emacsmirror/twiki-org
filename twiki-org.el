@@ -81,19 +81,31 @@
 (defun twiki-org-level ()
   "Calculate level of heading we're on/in.
 
-Note that we need to subtract 4 because of the extra,
-non-headline bits the regex matches: '---' at the beginning, and
-a trailing space after the +."
+FIXME: Not sure we need the direct call of
+twiki-org-outline-level, given that we've bound outline-level to
+it in the let; originally, that call had been to the (let version
+of) outline-level, but I found it was calling the function
+outline-level (instead of the twiki-org version) instead."
   (let ((count 1)
-        (outline-level 'outline-level))
+        (outline-level 'twiki-org-outline-level))
     (save-excursion
       (outline-back-to-heading t)
       (while (and (not (bobp))
-                  (not (eq (- (outline-level) 4) 1)))
+                  (not (eq (twiki-org-outline-level) 1)))
         (outline-up-heading 1)
         (or (bobp)
             (setq count (1+ count))))
       count)))
+
+(defun twiki-org-outline-level ()
+  "Return the depth to which a statement is nested in the outline.
+Point must be at the beginning of a header line.
+This is actually either the level specified in `outline-heading-alist'
+or else the number of characters matched by `outline-regexp'.
+
+Customized for twiki-org-mode."
+  (or (cdr (assoc (match-string 1) outline-heading-alist))
+      (- (match-end 1) (match-beginning 1))))
 
 (defun twiki-org-level-interactive ()
   "Interactive call for twiki-org-level."
