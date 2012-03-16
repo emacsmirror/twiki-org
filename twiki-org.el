@@ -164,6 +164,24 @@ in the region."
   (save-excursion
     (twiki-org-demote)))
 
+(defun twiki-org-metaright-hook ()
+  "Hook to get meta-right to run twiki-org-demote."
+  ((or (org-on-heading-p)
+       (and (org-region-active-p)
+	    (save-excursion
+	      (goto-char (region-beginning))
+	      (org-on-heading-p)))
+       (call-interactively 'twiki-org-do-demote))))
+
+(defun twiki-org-metaleft-hook ()
+  "Hook to get meta-left to run twiki-org-promote."
+  ((or (org-on-heading-p)
+       (and (org-region-active-p)
+	    (save-excursion
+	      (goto-char (region-beginning))
+	      (org-on-heading-p))))
+   (call-interactively 'twiki-org-do-promote)))
+
 (defun twiki-org-demote ()
   "Demote the current heading lower down the tree.
 If the region is active in `transient-mark-mode', demote all headings
@@ -227,6 +245,9 @@ in the region."
   (twiki-org-toggle-html twiki-org-hide-html-tags)
 
   (local-set-key "C-cu" 'twiki-org-promote)
+  (add-hook 'org-metaright-hook 'twiki-org-do-demote)
+  (add-hook 'org-metaleft-hook  'twiki-org-do-promote)
+
   (make-local-variable 'font-lock-extra-managed-props)
   (setq font-lock-extra-managed-props '(invisible)))
 
