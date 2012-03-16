@@ -43,7 +43,7 @@
 
 (require 'outline)
 
-(defvar twiki-org-regexp "---\\(\\++\\)\\(?:!!\\)? \\|\\(\\(?:   \\)+\\)[0-9*] ")
+(defvar twiki-org-regexp "---\\(\\++\\)\\(?:!!\\)? ")
 
 (defvar twiki-org-html-tag-face 'twiki-org-html-tag-face
   "Font Lock mode face used to highlight HTML tags in twiki-org mode.")
@@ -55,7 +55,7 @@
 (defvar twiki-org-hide-html-tags t)
 
 (defvar twiki-org-font-lock-keywords
-  '(("---\\++\\(!!\\)? .*\\|\\(\\(?:   \\)+\\)[0-9*] .*\\(?:\n\\1 +[^ %0-9*\n].*\\)*"
+  '(("---\\++\\(!!\\)? .*"
      0 (twiki-org-choose-face) nil t)
     ("<[^\>]*>"
      0 '(face           twiki-org-html-tag-face
