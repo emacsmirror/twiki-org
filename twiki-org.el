@@ -136,6 +136,29 @@ in the region."
     (if org-adapt-indentation (org-fixup-indentation (- diff)))
     (run-hooks 'org-after-promote-entry-hook)))
 
+(defun twiki-org-dmo()
+  "Interactive call for twiki-org-promote."
+  (interactive)
+  (save-excursion
+    (twiki-org-demote)))
+
+(defun twiki-org-demote ()
+  "Promote the current heading higher up the tree.
+If the region is active in `transient-mark-mode', demote all headings
+in the region.  FIXME: Not yet working."
+  (org-back-to-heading t)
+  (let* ((level (save-match-data (funcall 'twiki-org-level)))
+	 (after-change-functions (remove 'flyspell-after-change-function
+					  after-change-functions))
+	 (up-head (concat "---" (make-string (+ level 1) ?+) " "))
+	 (diff (abs (- level (length up-head) -1))))
+    (if (= level 1) (error "Cannot demote to level 0.  UNDO to recover if necessary"))
+    (replace-match up-head nil t)
+    ;; Fixup tag positioning
+    (and org-auto-align-tags (org-set-tags nil t))
+    (if org-adapt-indentation (org-fixup-indentation (- diff)))
+    (run-hooks 'org-after-demote-entry-hook)))
+
 (defun twiki-org-choose-face ()
   (let ((face (aref twiki-org-faces
                     (% (funcall outline-level)
