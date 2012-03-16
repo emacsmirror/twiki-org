@@ -143,20 +143,18 @@ in the region."
     (twiki-org-demote)))
 
 (defun twiki-org-demote ()
-  "Promote the current heading higher up the tree.
+  "Demote the current heading lower down the tree.
 If the region is active in `transient-mark-mode', demote all headings
-in the region.  FIXME: Not yet working."
+in the region."
   (org-back-to-heading t)
   (let* ((level (save-match-data (funcall 'twiki-org-level)))
-	 (after-change-functions (remove 'flyspell-after-change-function
-					  after-change-functions))
-	 (up-head (concat "---" (make-string (+ level 1) ?+) " "))
-	 (diff (abs (- level (length up-head) -1))))
-    (if (= level 1) (error "Cannot demote to level 0.  UNDO to recover if necessary"))
-    (replace-match up-head nil t)
+	 ;; (down-head (concat (make-string (org-get-valid-level level 1) ?*) " "))
+	 (down-head  (concat "---" (make-string (+ level 1) ?+) " "))
+	 (diff (abs (- level (length down-head) -1))))
+    (replace-match down-head nil t)
     ;; Fixup tag positioning
     (and org-auto-align-tags (org-set-tags nil t))
-    (if org-adapt-indentation (org-fixup-indentation (- diff)))
+    (if org-adapt-indentation (org-fixup-indentation diff))
     (run-hooks 'org-after-demote-entry-hook)))
 
 (defun twiki-org-choose-face ()
