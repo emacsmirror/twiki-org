@@ -85,17 +85,21 @@ FIXME: Not sure we need the direct call of
 twiki-org-outline-level, given that we've bound outline-level to
 it in the let; originally, that call had been to the (let version
 of) outline-level, but I found it was calling the function
-outline-level (instead of the twiki-org version) instead."
+outline-level (instead of the twiki-org version) instead.
+
+FIXME: Not sure why the original function went all the way back
+to the beginning of the buffer to figure out the level."
   (let ((count 1)
         (outline-level 'twiki-org-outline-level))
     (save-excursion
       (outline-back-to-heading t)
-      (while (and (not (bobp))
-                  (not (eq (twiki-org-outline-level) 1)))
-        (outline-up-heading 1)
-        (or (bobp)
-            (setq count (1+ count))))
-      count)))
+      (twiki-org-outline-level))))
+      ;; (while (and (not (bobp))
+      ;;             (not (eq (twiki-org-outline-level) 1)))
+      ;;   (outline-up-heading 1)
+      ;;   (or (bobp)
+      ;;       (setq count (1+ count))))
+      ;; count)))
 
 (defun twiki-org-outline-level ()
   "Return the depth to which a statement is nested in the outline.
