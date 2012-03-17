@@ -1,7 +1,16 @@
 ;;; twiki-org.el --- major mode for editing twiki documents
 
+;; Copyright (C) 2012 Hugh Brown
+;; http://saintaardvarkthecarpeted.com
+
 ;; My attempt to base twiki mode on org, rather than outline.
 ;; Hugh Brown, March 16 2012
+
+;; What works:
+;; - M-left/right will promote/demote a heading
+;; - C-enter will create a new heading, or a new entry in a list
+;; - tab will cycle visibility for headings
+;; - I don't seem to have broken tables. :-)
 
 ;; Copyright (C) 2004 Noah S. Friedman
 
