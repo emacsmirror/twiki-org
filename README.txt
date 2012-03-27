@@ -8,11 +8,12 @@ start. :-)  Here's what else works:
 * Promoting and demoting items (though with occasional confusion, and
   a limit of three headings -- not sure why)
 
-What's borked:
+What's borked (aka TODO):
 
-* Tables -- hitting tab seems to fail
+* Tables -- hitting tab seems to fail.
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
+* Tags like <verbatim> are hidden, presumably by Org-mode.
 
 Released under the GPL v2, like Org and the original twiki-outline.
 Share and enjoy!
