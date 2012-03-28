@@ -269,6 +269,7 @@ in the region."
   (twiki-org-toggle-html twiki-org-hide-html-tags)
 
   (local-set-key "C-cu" 'twiki-org-promote)
+  (local-set-key [f9] 'twiki-org-toggle-html)
   (add-hook 'org-metaright-hook 'twiki-org-do-demote)
   (add-hook 'org-metaleft-hook  'twiki-org-do-promote)
 
