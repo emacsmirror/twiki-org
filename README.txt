@@ -16,6 +16,12 @@ What's borked (aka TODO):
 * Tags like <verbatim> are hidden, presumably by Org-mode.
 * org-meta-return does not insert a new headline; org-insert-headline
   inserts one beginning with "*".
+* [[http://example.org][Links]] are not displayed as just Links, as
+  they are in org-mode.
+* Possibly implementing the "Can I get the visibility-cycling features
+  in outline-mode and outline-minor-mode?" part of the Org FAQ
+  (http://orgmode.org/worg/org-faq.html)
+
 
 Released under the GPL v2, like Org and the original twiki-outline.
 Share and enjoy!
