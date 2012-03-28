@@ -14,6 +14,8 @@ What's borked (aka TODO):
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
 * Tags like <verbatim> are hidden, presumably by Org-mode.
+* org-meta-return does not insert a new headline; org-insert-headline
+  inserts one beginning with "*".
 
 Released under the GPL v2, like Org and the original twiki-outline.
 Share and enjoy!
