@@ -8,8 +8,7 @@ S. Friedman, as my base.
 As of now, cycling visibility with the tab key works.  Hey, it's a
 start. :-)  Here's what else works:
 
-* Promoting and demoting items (though with occasional confusion, and
-  a limit of three headings -- not sure why)
+* Promoting and demoting items
 
 Released under the GPL v2, like Org and the original twiki-outline.
 Share and enjoy!
