@@ -204,6 +204,107 @@ in the region."
 	      (org-on-heading-p)))
        (call-interactively 'twiki-org-do-demote)))))
 
+
+;; (defun twiki-org-indent-item ()
+;;   "Meant to indent a Twiki item -- lists, in particular. FIXME: Not written yet.
+
+;; Currently calling org-interactive item.  May be able to get away
+;; with twiddling orgg-item-indent-positions in order to get
+;; indentation right (multiple of 3)."
+;;   (interactive)
+;;   (message "FIXME: Not written yet...calling org-interactive-item")
+;;   (call-interactively 'org-indent-item))
+
+(defun twiki-org-indent-item (arg)
+  "Indent a local list item. Copied from org-indent-item"
+  (interactive "p")
+  (and (org-region-active-p) (org-cursor-to-region-beginning))
+  (unless (org-at-item-p)
+    (error "Not on an item"))
+  (let (beg end ind ind1 ind-bul delta ind-down ind-up firstp)
+    (setq firstp (org-first-list-item-p))
+    (save-excursion
+      (setq end (and (org-region-active-p) (region-end)))
+      (if (memq last-command '(org-shiftmetaright org-shiftmetaleft))
+	  (setq beg org-last-indent-begin-marker
+		end org-last-indent-end-marker)
+	(org-beginning-of-item)
+	(setq beg (move-marker org-last-indent-begin-marker (point)))
+	(org-end-of-item)
+	(setq end (move-marker org-last-indent-end-marker (or end (point)))))
+      (goto-char beg)
+      (setq ind-bul (twiki-org-item-indent-positions)
+	    ind (caar ind-bul)
+	    ind-down (car (nth 2 ind-bul))
+	    ind-up (car (nth 1 ind-bul))
+	    delta (if (> arg 0)
+		      (if ind-down (- ind-down ind) 2)
+		    (if ind-up (- ind-up ind) -2)))
+      (if (< (+ delta ind) 0) (error "Cannot outdent beyond margin"))
+      (while (< (point) end)
+	(beginning-of-line 1)
+	(skip-chars-forward " \t") (setq ind1 (current-column))
+	(delete-region (point-at-bol) (point))
+	(or (eolp) (org-indent-to-column (+ ind1 delta)))
+	(beginning-of-line 2)))
+    (org-fix-bullet-type
+     (and (> arg 0)
+	  (not firstp)
+	  (cdr (assoc (cdr (nth 0 ind-bul)) org-list-demote-modify-bullet))))
+    (org-maybe-renumber-ordered-list-safe)
+    (save-excursion
+      (beginning-of-line 0)
+      (condition-case nil (org-beginning-of-item) (error nil))
+      (org-maybe-renumber-ordered-list-safe))))
+
+(defun twiki-org-item-indent-positions ()
+  "Return indentation for plain list items.
+This returns a list with three values:	The current indentation, the
+parent indentation and the indentation a child should have.
+Assumes cursor in item line."
+  (let* ((bolpos (point-at-bol))
+	 (ind (org-get-indentation))
+	 (bullet (org-get-bullet))
+	 ind-down ind-up bullet-up bullet-down pos)
+    (save-excursion
+      (org-beginning-of-item-list)
+      (skip-chars-backward "\n\r \t")
+      (when (org-in-item-p)
+	(org-beginning-of-item)
+	(setq ind-up (org-get-indentation))
+	(setq bullet-up (org-get-bullet))))
+    (setq pos (point))
+    (save-excursion
+      (cond
+       ((and (condition-case nil (progn (org-previous-item) t)
+	       (error nil))
+	     (or (forward-char 1) t)
+	     (re-search-forward "^\\([ \t]*\\([-+]\\|\\([0-9]+[.)]\\)\\)\\|[ \t]+\\*\\)\\( \\|$\\)" bolpos t))
+	(setq ind-down (org-get-indentation)
+	      bullet-down (org-get-bullet)))
+       ((and (goto-char pos)
+	     (org-at-item-p))
+	(goto-char (match-end 0))
+	(skip-chars-forward " \t")
+	;; (setq ind-down (current-column)
+	;; Hack: next multiple of 3 like so:
+	;; current column + 3, divided by 3, truncated, times 3.
+	;; This is a big ugly, and I'm not sure if I need to call truncate;
+	;; doesn't look like it's floating point by default. But I'll leave
+	;; it in here for now.
+	(setq ind-down (* 3 (truncate (/ (+ 3 (current-column)) 3)))
+	      bullet-down (org-get-bullet)))))
+    (if (and bullet-down (string-match "\\`[0-9]+\\(\\.\\|)\\)\\'" bullet-down))
+	(setq bullet-down (concat "1" (match-string 1 bullet-down))))
+    (if (and bullet-up (string-match "\\`[0-9]+\\(\\.\\|)\\)\\'" bullet-up))
+	(setq bullet-up (concat "1" (match-string 1 bullet-up))))
+    (if (and bullet (string-match "\\`[0-9]+\\(\\.\\|)\\)\\'" bullet))
+	(setq bullet (concat "1" (match-string 1 bullet))))
+    (list (cons ind bullet)
+	  (cons ind-up bullet-up)
+	  (cons ind-down bullet-down))))
+
+
 (defun twiki-org-metaleft-hook ()
   "Hook to get meta-left to run twiki-org-promote."
   ((or (org-on-heading-p)
