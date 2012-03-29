@@ -13,16 +13,16 @@ start. :-)  Here's what else works:
 * When hitting alt-enter on a list item (3 spaces then asterisk),
   you'll get another list item
 
+* Indenting a list item with twiki-org-demote-item
+  will move it in by a multiple of 3
+
 Released under the GPL v2, like Org and the original twiki-outline.
-Share and enjoy!
+Comments, patches and suggestions welcome.  Share and enjoy!
 
 What's borked (aka TODO):
 -------------------------
 
 * Tables -- hitting tab seems to fail.
-
-* Doubtless doing some Emacs stuff quite wrong; this is my first
-  attempt at anything like this.
 
 * Tags like <verbatim> are hidden, presumably by Org-mode.
 
@@ -50,6 +50,14 @@ What's borked (aka TODO):
 * shift-left/right on a list item promotes the headline it's in,
   rather than indenting the list item.
 
+* alt-right will demote a list *and* the heading it's in; alt-left
+  will just demote the heading.
+
+* Doubtless doing some Emacs stuff quite wrong; this is my first
+  attempt at anything like this.
+
+Contact
+-------
 
 aardvark [at] saintaardvarkthecarpeted [dot] com
 
