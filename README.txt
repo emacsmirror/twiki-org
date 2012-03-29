@@ -37,9 +37,6 @@ What's borked (aka TODO):
     I bind it to f8, it doesn't toggle until I switch to another
     buffer.)
 
-* org-meta-return does not insert a new headline; org-insert-headline
-  inserts one beginning with "*".
-
 * [[http://example.org][Links]] are not displayed as just Links, as
   they are in org-mode.
 
