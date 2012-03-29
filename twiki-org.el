@@ -190,12 +190,19 @@ in the region."
 
 (defun twiki-org-metaright-hook ()
   "Hook to get meta-right to run twiki-org-demote."
-  ((or (org-on-heading-p)
-       (and (org-region-active-p)
+  (cond
+   ((or (org-at-item-p)
+	(and (org-region-active-p)
+	     (save-excursion
+	       (goto-char (region-beginning))
+	       (org-at-item-p))))
+    (call-interactively 'twiki-org-indent-item))
+   ((or (org-on-heading-p)
+       (and xb(org-region-active-p)
 	    (save-excursion
 	      (goto-char (region-beginning))
 	      (org-on-heading-p)))
-       (call-interactively 'twiki-org-do-demote))))
+       (call-interactively 'twiki-org-do-demote)))))
 
 (defun twiki-org-metaleft-hook ()
   "Hook to get meta-left to run twiki-org-promote."
