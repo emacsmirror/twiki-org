@@ -31,7 +31,11 @@ What's borked (aka TODO):
 
   - For some reason, the toggling won't happen until I press <f9> and
     then any other key.  It happens immediately if I run M-x
-    twiki-org-toggle-html.  Did I mention I'm a newbie at programming Emacs?
+    twiki-org-toggle-html. (Whoops: turns out I had <f9>-y bound to
+    something, so evidently it was waiting for <f9> to be followed by
+    something else to make sure it wasn't that function.  But now, if
+    I bind it to f8, it doesn't toggle until I switch to another
+    buffer.)
 
 * org-meta-return does not insert a new headline; org-insert-headline
   inserts one beginning with "*".
