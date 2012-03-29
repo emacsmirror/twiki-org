@@ -10,6 +10,9 @@ start. :-)  Here's what else works:
 
 * Promoting and demoting items
 
+* When hitting alt-enter on a list item (3 spaces then asterisk),
+  you'll get another list item
+
 Released under the GPL v2, like Org and the original twiki-outline.
 Share and enjoy!
 
@@ -44,6 +47,8 @@ What's borked (aka TODO):
   in outline-mode and outline-minor-mode?" part of the Org FAQ
   (http://orgmode.org/worg/org-faq.html)
 
+* shift-left/right on a list item promotes the headline it's in,
+  rather than indenting the list item.
 
 
 aardvark [at] saintaardvarkthecarpeted [dot] com
