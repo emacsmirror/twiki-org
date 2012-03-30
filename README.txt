@@ -53,6 +53,8 @@ What's borked (aka TODO):
 * alt-right will demote a list *and* the heading it's in; alt-left
   will just demote the heading.
 
+* longlines-mode seems to turn the buffer read-only; not sure why.
+
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
 
