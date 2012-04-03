@@ -69,7 +69,6 @@
     ("<[^\>]*>"
      0 '(face           twiki-org-html-tag-face
          invisible      twiki-org-html-tag
-         read-only      twiki-org-html-tag
          front-sticky   nil
          rear-nonsticky t)
      t t)))
@@ -346,15 +345,10 @@ in the region."
           (not twiki-org-hide-html-tags)))
 
   (cond (twiki-org-hide-html-tags
-         (add-to-list 'buffer-invisibility-spec 'twiki-org-html-tag)
-         (when (listp inhibit-read-only)
-           (setq inhibit-read-only
-                 (delq 'twiki-org-html-tag inhibit-read-only))))
+         (add-to-list 'buffer-invisibility-spec 'twiki-org-html-tag))
         (t
          (setq buffer-invisibility-spec
-               (delq 'twiki-org-html-tag buffer-invisibility-spec))
-         (when (listp inhibit-read-only)
-           (add-to-list 'inhibit-read-only 'twiki-org-html-tag))))
+               (delq 'twiki-org-html-tag buffer-invisibility-spec))))
 
   (and (interactive-p)
        (if twiki-org-hide-html-tags
@@ -370,9 +364,6 @@ in the region."
   (setq outline-level 'twiki-org-level)
 
   (setcar font-lock-defaults 'twiki-org-font-lock-keywords)
-
-  (make-local-variable 'inhibit-read-only)
-  (setq inhibit-read-only nil)
 
   (twiki-org-toggle-html twiki-org-hide-html-tags)
 
