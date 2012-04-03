@@ -54,6 +54,7 @@ What's borked (aka TODO):
   will just demote the heading.
 
 * longlines-mode seems to turn the buffer read-only; not sure why.
+  --Aha: inhibit-read-only affected by twiki-org-hide-html-tags.
 
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
