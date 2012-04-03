@@ -16,6 +16,9 @@ start. :-)  Here's what else works:
 * Indenting a list item with twiki-org-demote-item
   will move it in by a multiple of 3
 
+* Saving buffers works even when longlines-mode is enabled.  (Really
+  oughta start a proper changelog...)
+
 Released under the GPL v2, like Org and the original twiki-outline.
 Comments, patches and suggestions welcome.  Share and enjoy!
 
@@ -52,9 +55,6 @@ What's borked (aka TODO):
 
 * alt-right will demote a list *and* the heading it's in; alt-left
   will just demote the heading.
-
-* longlines-mode seems to turn the buffer read-only; not sure why.
-  --Aha: inhibit-read-only affected by twiki-org-hide-html-tags.
 
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
