@@ -22,9 +22,6 @@ start. :-)  Here's what else works:
 * Saving buffers works even when longlines-mode is enabled.  (Really
   oughta start a proper changelog...)
 
-Released under the GPL v2, like Org and the original twiki-outline.
-Comments, patches and suggestions welcome.  Share and enjoy!
-
 What's borked (aka TODO):
 -------------------------
 
@@ -58,6 +55,12 @@ What's borked (aka TODO):
 
 * Doubtless doing some Emacs stuff quite wrong; this is my first
   attempt at anything like this.
+
+License
+-------
+
+Released under the GPL v2, like Org and the original twiki-outline.
+Comments, patches and suggestions welcome.  Share and enjoy!
 
 Contact
 -------
