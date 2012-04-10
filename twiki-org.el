@@ -363,7 +363,8 @@ in the region."
   (make-local-variable 'outline-level)
   (setq outline-level 'twiki-org-level)
 
-  (setcar font-lock-defaults 'twiki-org-font-lock-keywords)
+  (make-local-variable font-lock-defaults)
+  (setq font-lock-defaults twiki-org-font-lock-keywords)
 
   (twiki-org-toggle-html twiki-org-hide-html-tags)
 

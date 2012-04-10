@@ -16,6 +16,9 @@ start. :-)  Here's what else works:
 * Indenting a list item with twiki-org-demote-item
   will move it in by a multiple of 3
 
+* [[http://example.org][Links]] are displayed as just Links, as they
+  are in org-mode.
+
 * Saving buffers works even when longlines-mode is enabled.  (Really
   oughta start a proper changelog...)
 
@@ -42,9 +45,6 @@ What's borked (aka TODO):
     something else to make sure it wasn't that function.  But now, if
     I bind it to f8, it doesn't toggle until I switch to another
     buffer.)
-
-* [[http://example.org][Links]] are not displayed as just Links, as
-  they are in org-mode.
 
 * Possibly implementing the "Can I get the visibility-cycling features
   in outline-mode and outline-minor-mode?" part of the Org FAQ
