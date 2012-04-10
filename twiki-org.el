@@ -378,6 +378,8 @@ in the region."
 
 (provide 'twiki-org)
 
+(run-hooks 'twiki-org-load-hook)
+
 ;;; twiki-org.el ends here.
 
 ;; FIXME: Should we be using org-fontify-like-in-org-mode?  See org.el.
