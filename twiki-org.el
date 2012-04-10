@@ -379,4 +379,5 @@ in the region."
 
 ;;; twiki-org.el ends here.
 
-;; FIXME: SHould we be using org-fontify-like-in-org-mode?  See org.el.
+;; FIXME: Should we be using org-fontify-like-in-org-mode?  See org.el.
+;; FIXME: Should we be using org-insert-link-global?  See org.el.
