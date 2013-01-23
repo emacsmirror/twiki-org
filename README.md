@@ -63,8 +63,8 @@ What's borked (aka TODO):
 License
 -------
 
-Released under the GPL v2, like Org and the original twiki-outline.
-Comments, patches and suggestions welcome.  Share and enjoy!
+Released under the GPL v3, like Orgmode.  Comments, patches and
+suggestions welcome.  Share and enjoy!
 
 Contact
 -------
