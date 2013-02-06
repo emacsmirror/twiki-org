@@ -68,7 +68,8 @@
 
 (defface twiki-org-html-tag-face
     '((t :inherit font-lock-string-face))
-    "Font Lock mode face used to highlight HTML tags in twiki-org mode.")
+    "Font Lock mode face used to highlight HTML tags in twiki-org mode."
+    :group 'twiki-org)
 
 (defvar twiki-org-hide-html-tags t)
 
