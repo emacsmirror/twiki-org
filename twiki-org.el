@@ -356,7 +356,7 @@ in the region."
          (setq buffer-invisibility-spec
                (delq 'twiki-org-html-tag buffer-invisibility-spec))))
 
-  (and (called-interactively-p)
+  (and (called-interactively-p "interactive")
        (if twiki-org-hide-html-tags
            (message "Hiding HTML tags")
          (message "Displaying HTML tags"))))
