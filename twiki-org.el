@@ -5,7 +5,7 @@
 
 ;; Author: Hugh Brown <aardvark@saintaardvarkthecarpeted.com>
 ;; Version: 0.8
-;; Package-requires: ((org-mode))
+;; Package-requires: ((org "6.0"))
 
 ;; My attempt to base twiki mode on org, rather than outline.
 ;; Hugh Brown, March 16 2012
