@@ -60,7 +60,7 @@
 
 (defgroup twiki-org nil
   "Major mode for editing twiki documents"
-  :group org)
+  :group 'org)
 
 (defvar twiki-org-regexp "---\\(\\++\\)\\(?:!!\\)? ")
 
