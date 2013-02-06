@@ -3,6 +3,10 @@
 ;; Copyright (C) 2012 Hugh Brown
 ;; http://saintaardvarkthecarpeted.com
 
+;; Author: Hugh Brown <aardvark@saintaardvarkthecarpeted.com>
+;; Version: 0.8
+;; Package-requires: ((org-mode))
+
 ;; My attempt to base twiki mode on org, rather than outline.
 ;; Hugh Brown, March 16 2012
 
@@ -12,6 +16,8 @@
 ;; - tab will cycle visibility for headings
 ;; - I don't seem to have broken tables. :-)
 
+
+;; Based on the original twiki-mode by Noah S. Friedman.
 ;; Copyright (C) 2004 Noah S. Friedman
 
 ;; Author: Noah Friedman <friedman@splode.com>
@@ -380,7 +386,7 @@ in the region."
 
 (run-hooks 'twiki-org-load-hook)
 
-;;; twiki-org.el ends here.
-
 ;; FIXME: Should we be using org-fontify-like-in-org-mode?  See org.el.
 ;; FIXME: Should we be using org-insert-link-global?  See org.el.
+
+;;; twiki-org.el ends here.
