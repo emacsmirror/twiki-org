@@ -312,12 +312,12 @@ Assumes cursor in item line."
 
 (defun twiki-org-metaleft-hook ()
   "Hook to get meta-left to run twiki-org-promote."
-  ((or (org-on-heading-p)
-       (and (org-region-active-p)
-	    (save-excursion
-	      (goto-char (region-beginning))
-	      (org-on-heading-p))))
-   (call-interactively 'twiki-org-do-promote)))
+  (or (org-on-heading-p)
+      (and (org-region-active-p)
+	   (save-excursion
+	     (goto-char (region-beginning))
+	     (org-on-heading-p))))
+  (call-interactively 'twiki-org-do-promote))
 
 (defun twiki-org-demote ()
   "Demote the current heading lower down the tree.
