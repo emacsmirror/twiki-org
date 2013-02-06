@@ -59,7 +59,8 @@
 (require 'outline)
 
 (defgroup twiki-org nil
-  "Major mode for editing twiki documents")
+  "Major mode for editing twiki documents"
+  :group org)
 
 (defvar twiki-org-regexp "---\\(\\++\\)\\(?:!!\\)? ")
 
