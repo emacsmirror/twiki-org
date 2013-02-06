@@ -203,7 +203,7 @@ in the region."
 	       (org-at-item-p))))
     (call-interactively 'twiki-org-indent-item))
    ((or (org-on-heading-p)
-       (and xb(org-region-active-p)
+       (and (org-region-active-p)
 	    (save-excursion
 	      (goto-char (region-beginning))
 	      (org-on-heading-p)))
