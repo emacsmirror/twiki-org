@@ -58,6 +58,9 @@
 
 (require 'outline)
 
+(defgroup twiki-org nil
+  "Major mode for editing twiki documents")
+
 (defvar twiki-org-regexp "---\\(\\++\\)\\(?:!!\\)? ")
 
 (defvar twiki-org-html-tag-face 'twiki-org-html-tag-face
